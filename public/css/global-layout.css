@@ -1,0 +1,59 @@
+/* Global Fixed Layout */
+html,
+body {
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+body {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Navbar / Top Bar / Header agar tetap (Fixed) */
+.navbar,
+.header-bg,
+.top-nav,
+nav,
+.header,
+.curved-header {
+    flex-shrink: 0 !important;
+    z-index: 1001 !important;
+}
+
+/* Area konten utama yang bisa di-scroll secara internal */
+.main-container,
+.main-content,
+.container,
+.page-content,
+.orders-container,
+main {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Custom Scrollbar for better UI */
+    scrollbar-width: thin;
+    scrollbar-color: #f0e1e6 transparent;
+}
+
+/* Webkit Scrollbar */
+.main-container::-webkit-scrollbar,
+.main-content::-webkit-scrollbar,
+.container::-webkit-scrollbar,
+.orders-container::-webkit-scrollbar,
+main::-webkit-scrollbar {
+    width: 6px;
+}
+
+.main-container::-webkit-scrollbar-thumb,
+.main-content::-webkit-scrollbar-thumb,
+.container::-webkit-scrollbar-thumb,
+.orders-container::-webkit-scrollbar-thumb,
+main::-webkit-scrollbar-thumb {
+    background: #f0e1e6;
+    border-radius: 10px;
+}
