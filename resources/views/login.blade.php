@@ -37,7 +37,11 @@
             </div>
         </div>
 
-        <div style="text-align: right; margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <div class="remember-wrap">
+                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                <label for="remember">Ingatkan Saya</label>
+            </div>
             <a href="{{ route('forgot-password') }}" style="color: #c0435f; font-size: 0.8rem; text-decoration: none; font-weight: 500;">Lupa Password?</a>
         </div>
 

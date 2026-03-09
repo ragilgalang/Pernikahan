@@ -30,9 +30,18 @@ class VenueController extends Controller
     {
         $venue = Venue::findOrFail($id);
 
-        // Pastikan gallery berupa array
-        if (is_string($venue->gallery)) {
-            $venue->gallery = json_decode($venue->gallery, true) ?? [];
+        // Parse gallery if it's a string
+        $gallery = is_string($venue->gallery) ? json_decode($venue->gallery, true) : ($venue->gallery ?? []);
+        
+        // Wrap gallery items in asset() and ensure paths are correct
+        $formattedGallery = array_map(function($img) {
+            return asset(ltrim($img, '/'));
+        }, $gallery);
+
+        // Prepend main image to gallery if not already present
+        $mainImage = asset($venue->image);
+        if (!in_array($mainImage, $formattedGallery)) {
+            array_unshift($formattedGallery, $mainImage);
         }
 
         // Format owner untuk kompatibilitas dengan view
@@ -41,11 +50,11 @@ class VenueController extends Controller
             'name' => $venue->name,
             'rating' => '4.5',
             'location' => $venue->location,
-            'price' => $venue->price,
+            'price' => 'IDR ' . number_format((float)$venue->price, 0, ',', '.'),
             'about' => $venue->about,
             'features' => $venue->features,
-            'gallery' => $venue->gallery ?? [],
-            'image' => $venue->image,
+            'gallery' => $formattedGallery,
+            'image' => $mainImage,
             'owner' => [
                 'name' => $venue->owner,
                 'bio' => 'Pengelola ' . $venue->name . ' yang berpengalaman dan berdedikasi memastikan pernikahan Anda berjalan sempurna.',

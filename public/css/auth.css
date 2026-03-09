@@ -111,6 +111,32 @@ body {
     position: relative;
 }
 
+.remember-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.remember-wrap input {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--rose);
+}
+
+.remember-wrap label {
+    margin: 0;
+    text-transform: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    letter-spacing: normal;
+}
+
 .input-wrap svg {
     position: absolute;
     left: 14px;

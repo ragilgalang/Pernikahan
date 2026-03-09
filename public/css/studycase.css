@@ -142,6 +142,33 @@ td {
     font-weight: 600;
 }
 
+/* Styles within table */
+.td-name {
+    font-weight: 700;
+    color: #c0435f;
+}
+
+.td-category {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #fffbf8;
+    border: 1px solid #f0e1e6;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.td-price {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.td-owner {
+    color: #8b7880;
+    font-size: 12px;
+}
+
+/* Scrollbar Styling */
 .table-responsive::-webkit-scrollbar {
     width: 6px;
 }
@@ -149,4 +176,57 @@ td {
 .table-responsive::-webkit-scrollbar-thumb {
     background: #f0e1e6;
     border-radius: 10px;
+}
+
+/* Laravel Pagination Override */
+.pagination-wrapper {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    padding: 0;
+}
+
+.pagination li {
+    display: inline-block;
+}
+
+.pagination li a,
+.pagination li span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid #f0e1e6;
+    background: #ffffff;
+    color: #c0435f;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.pagination li a:hover {
+    background: #fdf5f7;
+    border-color: #f4dce3;
+}
+
+.pagination li.active span {
+    background: #c0435f;
+    color: #ffffff;
+    border-color: #c0435f;
+}
+
+.pagination li.disabled span {
+    color: #ccc;
+    background: #fafafa;
+    border-color: #eee;
 }

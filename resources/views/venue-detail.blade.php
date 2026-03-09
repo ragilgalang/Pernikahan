@@ -74,7 +74,7 @@
         <div class="panel panel-left">
             <div class="venue-showcase">
                 <div class="main-gallery-card">
-                    <img src="{{ !empty($venue['gallery']) ? $venue['gallery'][0] : $venue['image'] }}" alt="{{ $venue['name'] }}">
+                    <img src="{{ $venue['image'] }}" alt="{{ $venue['name'] }}">
                     <div class="gallery-arrows">
                         <span class="arr-l">&lt;</span>
                         <span class="arr-r">&gt;</span>
@@ -120,9 +120,9 @@
                     <span class="p-amount">{{ $venue['price'] }}</span>
                     <span class="p-lbl">/ Malam</span>
                     @auth
-                        <a href="{{ route('checkout', request()->query()) }}" class="btn-book-now">Pesan Sekarang</a>
+                        <a href="{{ route('checkout', ['venue_id' => $venue['id']] + request()->query()) }}" class="btn-book-now">Pesan Sekarang</a>
                     @else
-                        <a href="{{ route('login', ['redirect_to' => route('checkout', request()->query())]) }}" class="btn-book-now">Pesan Sekarang</a>
+                        <a href="{{ route('login', ['redirect_to' => route('checkout', ['venue_id' => $venue['id']] + request()->query())]) }}" class="btn-book-now">Pesan Sekarang</a>
                     @endauth
                 </div>
             </div>
@@ -166,7 +166,7 @@
                             <circle cx="210" cy="110" r="20" stroke="#c9637a" stroke-opacity="0.2" stroke-width="5" />
                         </svg>
                         <div class="map-label-overlay">
-                            114, Ayush, Doddabalapur, Bengaluru 560041
+                            {{ $venue['location'] }}
                         </div>
                     </div>
                 </div>

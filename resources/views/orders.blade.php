@@ -46,14 +46,7 @@
             <a href="{{ route('dashboard') }}" class="nav-circle-btn" id="toggleLeft">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             </a>
-            <div class="header-center-floral">
-                <svg width="180" height="auto" viewBox="0 0 100 60" style="opacity: 0.8;">
-                    <path d="M30 40 C 35 25, 45 20, 50 30 C 55 20, 65 25, 70 40" fill="none" stroke="#8a3047" stroke-width="0.5" />
-                    <circle cx="50" cy="25" r="15" fill="#f5dde4" opacity="0.6" />
-                    <path d="M50 10 Q 55 25 50 40 Q 45 25 50 10" fill="#c9637a" />
-                    <path d="M40 20 Q 50 25 60 20 Q 50 35 40 20" fill="#c9637a" opacity="0.7" />
-                </svg>
-            </div>
+
             <div class="nav-menu-btn" id="toggleRight">
                 <span></span><span></span><span></span>
             </div>
@@ -90,9 +83,9 @@
                                 </div>
                             </div>
                             <div class="order-actions">
-                                <a href="#" class="btn-detail">Lihat Detail</a>
+                                <a href="{{ route('venues.show', $order['venue_id']) }}" class="btn-detail">Lihat Detail</a>
                                 @if($order['status'] == 'Menunggu Pembayaran')
-                                    <a href="{{ route('checkout') }}" class="btn-pay">Bayar Sekarang</a>
+                                    <a href="{{ route('checkout', ['venue_id' => $order['venue_id']]) }}" class="btn-pay">Bayar Sekarang</a>
                                 @endif
                             </div>
                         </div>
